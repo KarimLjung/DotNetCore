@@ -32,6 +32,8 @@ namespace DotNetCore
             });
 
             // This is a very small change 1.
+            // This is a very small change 2.
+            
         }
     }
 }
