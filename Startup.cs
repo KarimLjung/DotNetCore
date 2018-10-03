@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,12 +29,22 @@ namespace DotNetCore
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                var message = "090384-1125";
+                var message2 = "Hello world. I am finally free in this world. I will now conquer the world";
+                var match = Regex.Match(message, @"(\d{6})-(\d{4})");
+                var match2 = Regex.Matches(message2, "world").Count;
+                var match3 = Regex.Matches(message2, @"(wor)\b\w+");
+                
+                //await context.Response.WriteAsync($"group 1: {match.Groups[1]}");
+                //await context.Response.WriteAsync($"Number of worlds: {match2}");
+                foreach (var matchx in match3)
+                {
+                    await context.Response.WriteAsync(matchx.ToString());
+                }
+                
+                
             });
 
-            // This is a very small change 1.
-            // This is a very small change 2.
-            // This is a very small change 3.
         }
     }
 }
